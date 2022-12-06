@@ -1,4 +1,4 @@
-package com.projeto.agendaprofessor
+package com.projeto.agendaprofessor.view
 
 import android.content.Intent
 import android.graphics.Color
@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Window
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.projeto.agendaprofessor.R
 
 class SplashActivity : AppCompatActivity() {
 
@@ -40,7 +40,9 @@ class SplashActivity : AppCompatActivity() {
         progress_bar.max = 10
         txtNomeApp.setTextColor(Color.WHITE)
         txtNomeApp.text = ""+resources.getString(R.string.app_name)
-        txtNomeApp.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        txtNomeApp.typeface = ResourcesCompat.getFont(applicationContext,
+            R.font.secular_one_regular
+        )
         txtNomeApp.textSize = 34f
     }
 

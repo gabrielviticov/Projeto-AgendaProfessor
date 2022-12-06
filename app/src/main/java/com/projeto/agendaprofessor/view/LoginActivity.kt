@@ -1,7 +1,5 @@
-package com.projeto.agendaprofessor
+package com.projeto.agendaprofessor.view
 
-import android.content.res.ColorStateList
-import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.projeto.agendaprofessor.R
 
 class LoginActivity : AppCompatActivity() {
 
@@ -32,7 +31,9 @@ class LoginActivity : AppCompatActivity() {
 
     fun changeColorBar(){
         window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.statusBarColor)
-        window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.navigatorBarColor)
+        window.navigationBarColor = ContextCompat.getColor(applicationContext,
+            R.color.navigatorBarColor
+        )
     }
 
     fun findElementsByIds(){
@@ -55,7 +56,9 @@ class LoginActivity : AppCompatActivity() {
         editSenha.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
         editSenha.hint = "Sua Senha: "
         editSenha.setHintTextColor(Color.WHITE)
-        txtEsqueceuSenha.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        txtEsqueceuSenha.typeface = ResourcesCompat.getFont(applicationContext,
+            R.font.secular_one_regular
+        )
         txtEsqueceuSenha.textSize = 14f
         txtEsqueceuSenha.setTextColor(Color.WHITE)
         txtEsqueceuSenha.text = ""+resources.getString(R.string.txtEsqueceuSenha)
@@ -63,12 +66,18 @@ class LoginActivity : AppCompatActivity() {
         txtEsqueceuSenha.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         btnEntrar.text = ""+resources.getString(R.string.txtBtnEntrar)
         btnEntrar.setTextColor(Color.WHITE)
-        btnEntrar.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.statusBarColor))
+        btnEntrar.setBackgroundColor(ContextCompat.getColor(applicationContext,
+            R.color.statusBarColor
+        ))
         btnCadastrar.text = ""+resources.getString(R.string.txtBtnCadastrar)
         btnEntrar.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
         btnCadastrar.setTextColor(Color.WHITE)
-        btnCadastrar.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
-        btnCadastrar.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.statusBarColor))
+        btnCadastrar.typeface = ResourcesCompat.getFont(applicationContext,
+            R.font.secular_one_regular
+        )
+        btnCadastrar.setBackgroundColor(ContextCompat.getColor(applicationContext,
+            R.color.statusBarColor
+        ))
 
     }
 }
