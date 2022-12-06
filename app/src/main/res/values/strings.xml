@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Agenda do Professor</string>
+    <string name="txtLogin">Sessão de Login</string>
+    <string name="txtEsqueceuSenha">Não lembra da senha?</string>
+    <string name="txtBtnEntrar">Entrar</string>
+    <string name="txtBtnCadastrar">Cadastrar</string>
 </resources>

@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
     fun customizeElements(){
         txtNomeApp = findViewById(R.id.txtNomeApp)
         progress_bar = findViewById(R.id.progress_bar)
-        progress_bar.max = 50
+        progress_bar.max = 10
         txtNomeApp.setTextColor(Color.WHITE)
         txtNomeApp.text = ""+resources.getString(R.string.app_name)
         txtNomeApp.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
@@ -46,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
 
     fun progressingBar(){
         Thread(Runnable{
-            while(i < 50){
+            while(i < 10){
                 i += 1
 
                 Handler(Looper.getMainLooper()).post(Runnable{
