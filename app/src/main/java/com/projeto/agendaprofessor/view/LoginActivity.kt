@@ -1,5 +1,6 @@
 package com.projeto.agendaprofessor.view
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         changeColorBar()
         findElementsByIds()
         customizeElements()
+        eventsOnClick()
     }
 
     fun changeColorBar(){
@@ -79,5 +81,12 @@ class LoginActivity : AppCompatActivity() {
             R.color.statusBarColor
         ))
 
+    }
+
+    fun eventsOnClick(){
+        btnCadastrar.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, CadastroActivity::class.java))
+            finish()
+        }
     }
 }

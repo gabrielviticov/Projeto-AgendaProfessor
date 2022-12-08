@@ -1,18 +1,6 @@
 package com.projeto.agendaprofessor.model
 
-class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascimento: String, email: String, senha: Long, telefone: Long ) {
-
-    init {
-        setId(id)
-        setRegistro(registro)
-        setNome(nome)
-        setCpf(cpf)
-        setDtaNascimento(dtaNascimento)
-        setEmail(email)
-        setSenha(senha)
-        setTelefone(telefone)
-    }
-
+class Alunos {
     private var id: Int? = null
     private var registro: String? = null
     private var nome: String? = null
@@ -39,6 +27,4 @@ class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascime
     public fun setDtaNascimento(value: String?) { this.dtaNascimento = value }
     public fun setSenha(value: Long?) { this.senha = value }
     public fun setTelefone(value: Long?) { this.telefone = value }
-
-
 }
