@@ -1,12 +1,17 @@
 package com.projeto.agendaprofessor.view
 
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.projeto.agendaprofessor.R
@@ -24,21 +29,22 @@ class CadastroActivity : AppCompatActivity() {
     lateinit var editTelefone: EditText
     lateinit var btnSalvar: Button
     lateinit var btnCancelar: Button
-    lateinit var loginActivity: LoginActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
+        changeColor()
         findElementsByIds()
         getCalendar()
         customizeElements()
-        referencesActivity()
+        actionActivities()
+
     }
 
-    fun referencesActivity(){
-        loginActivity = LoginActivity(applicationContext)
-        //loginActivity.changeColorBar()
+    fun changeColor(){
+        window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.statusBarColor)
+        window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.navigatorBarColor)
     }
 
     fun findElementsByIds() {
@@ -113,6 +119,36 @@ class CadastroActivity : AppCompatActivity() {
 
         btnSalvar.setTextColor(Color.WHITE)
         btnCancelar.setTextColor(Color.WHITE)
+    }
+
+    fun actionActivities(){
+
+        btnCancelar.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.apply {
+                alertDialog.setTitle("Deseja Voltar?")
+                alertDialog.setMessage("Deseja voltar para a tela de Login?")
+                alertDialog.setMessage("Caso aceite, todos os dados do formulário serão apagados")
+                alertDialog.setPositiveButton(R.string.alertDialogVoltarLogin, DialogInterface.OnClickListener { dialogInterface, i ->  
+                    
+                    editRegistro.text.clear()
+                    editNome.text.clear()
+                    editCpf.text.clear()
+                    editDtaNascimento.text.clear()
+                    editEmail.text.clear()
+                    editSenha.text.clear()
+                    editTelefone.text.clear()
+                    editRegistro.requestFocus()
+                    
+                    startActivity(Intent(this@CadastroActivity, LoginActivity::class.java))
+                    finish()
+                })
+                
+                alertDialog.setNeutralButton(R.string.alertDialogCancelar, DialogInterface.OnClickListener { dialogInterface, i ->  })
+                
+
+            }.create().show()
+        }
     }
 
 

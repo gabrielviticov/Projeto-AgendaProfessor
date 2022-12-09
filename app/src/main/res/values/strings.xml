@@ -15,4 +15,7 @@
     <string name="hintTelefone">Telefone: </string>
     <string name="txtBtnSalvar">Salvar</string>
     <string name="txtBtnCancelar">Cancelar</string>
+
+    <string name="alertDialogVoltarLogin">Voltar p/Login</string>
+    <string name="alertDialogCancelar">Cancelar</string>
 </resources>

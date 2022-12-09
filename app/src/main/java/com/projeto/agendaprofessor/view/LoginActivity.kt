@@ -6,14 +6,16 @@ import android.graphics.Color
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.projeto.agendaprofessor.R
+import com.projeto.agendaprofessor.controller.ProfessorController
 
-open class LoginActivity(mContext: Context) : AppCompatActivity() {
+open class LoginActivity : AppCompatActivity() {
 
     lateinit var txtLogin: TextView
     lateinit var txtEsqueceuSenha: TextView
@@ -21,9 +23,6 @@ open class LoginActivity(mContext: Context) : AppCompatActivity() {
     lateinit var editSenha: EditText
     lateinit var btnEntrar: Button
     lateinit var btnCadastrar: Button
-
-    var mContext: Context = applicationContext
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,7 @@ open class LoginActivity(mContext: Context) : AppCompatActivity() {
         findElementsByIds()
         customizeElements()
         eventsOnClick()
-        mContext
+        var professorController = ProfessorController(applicationContext)
     }
 
     fun changeColorBar(){
@@ -88,6 +87,12 @@ open class LoginActivity(mContext: Context) : AppCompatActivity() {
     }
 
     fun eventsOnClick(){
+
+        btnEntrar.setOnClickListener {
+            if(TextUtils.isEmpty(editRP.text.toString())){ editRP.error = "*" }
+            if(TextUtils.isEmpty(editSenha.text.toString())){ editSenha.error = "*" }
+        }
+
         btnCadastrar.setOnClickListener {
             startActivity(Intent(this@LoginActivity, CadastroActivity::class.java))
             finish()
