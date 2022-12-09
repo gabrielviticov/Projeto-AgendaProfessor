@@ -1,5 +1,6 @@
 package com.projeto.agendaprofessor.view
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
@@ -12,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.projeto.agendaprofessor.R
 
-class LoginActivity : AppCompatActivity() {
+open class LoginActivity(mContext: Context) : AppCompatActivity() {
 
     lateinit var txtLogin: TextView
     lateinit var txtEsqueceuSenha: TextView
@@ -20,6 +21,10 @@ class LoginActivity : AppCompatActivity() {
     lateinit var editSenha: EditText
     lateinit var btnEntrar: Button
     lateinit var btnCadastrar: Button
+
+    var mContext: Context = applicationContext
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
         findElementsByIds()
         customizeElements()
         eventsOnClick()
+        mContext
     }
 
     fun changeColorBar(){
@@ -54,10 +60,8 @@ class LoginActivity : AppCompatActivity() {
         txtLogin.setTextColor(Color.WHITE)
         editRP.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
         editRP.hint = "Seu Registro Professor: "
-        editRP.setHintTextColor(Color.WHITE)
         editSenha.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
         editSenha.hint = "Sua Senha: "
-        editSenha.setHintTextColor(Color.WHITE)
         txtEsqueceuSenha.typeface = ResourcesCompat.getFont(applicationContext,
             R.font.secular_one_regular
         )

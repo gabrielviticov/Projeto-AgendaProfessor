@@ -1,14 +1,14 @@
 package com.projeto.agendaprofessor.view
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.projeto.agendaprofessor.R
 import java.util.Calendar
 
@@ -24,6 +24,7 @@ class CadastroActivity : AppCompatActivity() {
     lateinit var editTelefone: EditText
     lateinit var btnSalvar: Button
     lateinit var btnCancelar: Button
+    lateinit var loginActivity: LoginActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,13 @@ class CadastroActivity : AppCompatActivity() {
 
         findElementsByIds()
         getCalendar()
-        validation()
+        customizeElements()
+        referencesActivity()
+    }
+
+    fun referencesActivity(){
+        loginActivity = LoginActivity(applicationContext)
+        //loginActivity.changeColorBar()
     }
 
     fun findElementsByIds() {
@@ -71,6 +78,41 @@ class CadastroActivity : AppCompatActivity() {
             )
             datePickerDialog.show()
         }
+    }
+
+    fun customizeElements(){
+        txtCadastro.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editRegistro.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editNome.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editCpf.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editDtaNascimento.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editEmail.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editSenha.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        editTelefone.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+
+        txtCadastro.textSize = 30f
+        txtCadastro.setTextColor(Color.WHITE)
+        txtCadastro.text = ""+resources.getString(R.string.txtCadastro)
+
+        editRegistro.hint = ""+resources.getString(R.string.hintRegistroProfessor)
+        editNome.hint = ""+resources.getString(R.string.hintNome)
+        editCpf.hint = ""+resources.getString(R.string.hintCpf)
+        editDtaNascimento.hint = ""+resources.getString(R.string.hintDtaNascimento)
+        editEmail.hint = ""+resources.getString(R.string.hintEmail)
+        editSenha.hint = ""+resources.getString(R.string.hintSenha)
+        editTelefone.hint = ""+resources.getString(R.string.hintTelefone)
+
+        btnSalvar.text = ""+resources.getString(R.string.txtBtnSalvar)
+        btnCancelar.text = ""+resources.getString(R.string.txtBtnCancelar)
+
+        btnSalvar.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.statusBarColor))
+        btnCancelar.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.statusBarColor))
+
+        btnSalvar.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+        btnCancelar.typeface = ResourcesCompat.getFont(applicationContext, R.font.secular_one_regular)
+
+        btnSalvar.setTextColor(Color.WHITE)
+        btnCancelar.setTextColor(Color.WHITE)
     }
 
 

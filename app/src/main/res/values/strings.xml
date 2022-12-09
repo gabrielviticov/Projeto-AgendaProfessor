@@ -4,4 +4,15 @@
     <string name="txtEsqueceuSenha">Não lembra da senha?</string>
     <string name="txtBtnEntrar">Entrar</string>
     <string name="txtBtnCadastrar">Cadastrar</string>
+    <string name="txtCadastro">Sessão de Cadastro</string>
+
+    <string name="hintRegistroProfessor">Registro Professor: </string>
+    <string name="hintNome">Nome Completo: </string>
+    <string name="hintCpf">CPF: </string>
+    <string name="hintDtaNascimento">Data de Nascimento: </string>
+    <string name="hintEmail">Endereço de Email: </string>
+    <string name="hintSenha">Senha: </string>
+    <string name="hintTelefone">Telefone: </string>
+    <string name="txtBtnSalvar">Salvar</string>
+    <string name="txtBtnCancelar">Cancelar</string>
 </resources>
