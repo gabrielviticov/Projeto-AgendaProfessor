@@ -6,7 +6,7 @@ import android.view.Window
 class AppUtil {
     companion object {
         val TAG: String = "@AGENDA_PROFESSOR"
-        val DATABASE_NAME: String = "INSTITUICAO.db"
+        val DATABASE_NAME: String = "INSTITUICAO.sqlite"
         val DATABASE_VERSION: Int = 1
 
         val TABELA_PROFESSOR : String = "PROFESSORES"

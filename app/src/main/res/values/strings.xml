@@ -18,4 +18,6 @@
 
     <string name="alertDialogVoltarLogin">Voltar p/Login</string>
     <string name="alertDialogCancelar">Cancelar</string>
+    <string name="alertDialogSalvarProfessor">Salvar Professor</string>
+    <string name="alertDialogSalvarAluno">Salvar Aluno</string>
 </resources>

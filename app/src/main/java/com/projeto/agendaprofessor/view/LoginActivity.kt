@@ -1,6 +1,5 @@
 package com.projeto.agendaprofessor.view
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
@@ -27,7 +26,7 @@ open class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         changeColorBar()
         findElementsByIds()

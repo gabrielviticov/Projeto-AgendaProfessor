@@ -4,16 +4,15 @@ import android.content.ContentValues
 import android.content.Context
 import com.projeto.agendaprofessor.api.AppUtil
 import com.projeto.agendaprofessor.dataclass.AppAccess
-import com.projeto.agendaprofessor.datasource.AppDataSource
+import com.projeto.agendaprofessor.datasource.AppDataBase
 import com.projeto.agendaprofessor.model.Professor
 
-class ProfessorController(context: Context) : AppDataSource(context), AppAccess<Professor> {
+class ProfessorController(context: Context) : AppDataBase(context), AppAccess<Professor> {
 
-    lateinit var values: ContentValues
+
 
     override fun inserir(obj: Professor): Boolean {
-        TODO("Not yet implemented")
-        
+        val values = ContentValues()
         values.put(AppUtil.REGISTRO_PROFESSOR, obj.getRegistro())
         values.put(AppUtil.NOME_PROFESSOR, obj.getNome())
         values.put(AppUtil.EMAIL_PROFESSOR, obj.getEmail())
@@ -22,7 +21,7 @@ class ProfessorController(context: Context) : AppDataSource(context), AppAccess<
         values.put(AppUtil.SENHA_PROFESSOR, obj.getSenha())
         values.put(AppUtil.TELEFONE_PROFESSOR, obj.getTelefone())
         
-        return AppDataSource.incluir(null, AppUtil.TABELA_PROFESSOR, values)
+        return incluir(AppUtil.TABELA_PROFESSOR, values)
     }
 
     override fun alterar(obj: Professor): Boolean {

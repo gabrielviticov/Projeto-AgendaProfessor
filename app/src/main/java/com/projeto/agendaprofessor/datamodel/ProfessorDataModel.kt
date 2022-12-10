@@ -6,16 +6,16 @@ open class ProfessorDataModel {
     companion object {
         @JvmStatic
         fun queryCreateTable(): String {
-            AppUtil.query_professor += "CREATE TABLE IF NOT EXISTS " + AppUtil.TABELA_PROFESSOR + " ( " +
-            AppUtil.ID_PROFESSOR + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            AppUtil.REGISTRO_PROFESSOR + " TEXT NOT NULL UNIQUE, " +
-            AppUtil.NOME_PROFESSOR + " TEXT NOT NULL, " +
-            AppUtil.CPF_PROFESSOR + " INTEGER DEFAULT 00000000000, " +
-            AppUtil.DTA_NASCIMENTO_PROFESSOR + " TEXT NOT NULL, " +
-            AppUtil.EMAIL_PROFESSOR + " TEXT NOT NULL UNIQUE, " +
-            AppUtil.SENHA_PROFESSOR + " TEXT NOT NULL, " +
-            AppUtil.TELEFONE_PROFESSOR + " TEXT NOT NULL " +
-            " ) "
+            AppUtil.query_professor += "CREATE TABLE IF NOT EXISTS " + AppUtil.TABELA_PROFESSOR + " ( "
+            AppUtil.query_professor += AppUtil.ID_PROFESSOR + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            AppUtil.query_professor += AppUtil.REGISTRO_PROFESSOR + " TEXT NOT NULL UNIQUE, "
+            AppUtil.query_professor += AppUtil.NOME_PROFESSOR + " TEXT NOT NULL, "
+            AppUtil.query_professor += AppUtil.CPF_PROFESSOR + " TEXT DEFAULT '00000000000', "
+            AppUtil.query_professor += AppUtil.DTA_NASCIMENTO_PROFESSOR + " TEXT NOT NULL, "
+            AppUtil.query_professor += AppUtil.EMAIL_PROFESSOR + " TEXT NOT NULL, "
+            AppUtil.query_professor += AppUtil.SENHA_PROFESSOR + " TEXT NOT NULL, "
+            AppUtil.query_professor += AppUtil.TELEFONE_PROFESSOR + " TEXT NOT NULL "
+            AppUtil.query_professor += " ) "
             return AppUtil.query_professor
         }
 

@@ -1,12 +1,13 @@
 package com.projeto.agendaprofessor.view
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,6 +16,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.projeto.agendaprofessor.R
+import com.projeto.agendaprofessor.api.AppUtil
+import com.projeto.agendaprofessor.controller.ProfessorController
+import com.projeto.agendaprofessor.model.Professor
 import java.util.Calendar
 
 class CadastroActivity : AppCompatActivity() {
@@ -30,6 +34,8 @@ class CadastroActivity : AppCompatActivity() {
     lateinit var btnSalvar: Button
     lateinit var btnCancelar: Button
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
@@ -38,9 +44,12 @@ class CadastroActivity : AppCompatActivity() {
         findElementsByIds()
         getCalendar()
         customizeElements()
-        actionActivities()
+        actionByElements()
 
     }
+
+
+
 
     fun changeColor(){
         window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.statusBarColor)
@@ -121,24 +130,30 @@ class CadastroActivity : AppCompatActivity() {
         btnCancelar.setTextColor(Color.WHITE)
     }
 
-    fun actionActivities(){
+    fun clearForm(){
+        editRegistro.text.clear()
+        editNome.text.clear()
+        editCpf.text.clear()
+        editDtaNascimento.text.clear()
+        editEmail.text.clear()
+        editSenha.text.clear()
+        editTelefone.text.clear()
+        editRegistro.requestFocus()
+    }
+
+    fun actionByElements(){
+
+        var professor = Professor()
+        var professorController = ProfessorController(this)
 
         btnCancelar.setOnClickListener {
             val alertDialog = AlertDialog.Builder(this)
             alertDialog.apply {
                 alertDialog.setTitle("Deseja Voltar?")
-                alertDialog.setMessage("Deseja voltar para a tela de Login?")
-                alertDialog.setMessage("Caso aceite, todos os dados do formulário serão apagados")
+                alertDialog.setMessage("Deseja voltar para a tela de Login? Caso aceite, todos os dados do formulário serão apagados")
                 alertDialog.setPositiveButton(R.string.alertDialogVoltarLogin, DialogInterface.OnClickListener { dialogInterface, i ->  
                     
-                    editRegistro.text.clear()
-                    editNome.text.clear()
-                    editCpf.text.clear()
-                    editDtaNascimento.text.clear()
-                    editEmail.text.clear()
-                    editSenha.text.clear()
-                    editTelefone.text.clear()
-                    editRegistro.requestFocus()
+                    clearForm()
                     
                     startActivity(Intent(this@CadastroActivity, LoginActivity::class.java))
                     finish()
@@ -146,6 +161,52 @@ class CadastroActivity : AppCompatActivity() {
                 
                 alertDialog.setNeutralButton(R.string.alertDialogCancelar, DialogInterface.OnClickListener { dialogInterface, i ->  })
                 
+
+            }.create().show()
+        }
+
+        btnSalvar.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.apply {
+                alertDialog.setTitle("Salvar os dados")
+                alertDialog.setMessage("Os dados serão salvos a partir da opção desejada. Escolha uma opção abaixo para salvar os dados")
+                alertDialog.setPositiveButton(R.string.alertDialogSalvarProfessor, DialogInterface.OnClickListener { dialogInterface, i ->
+                    if(btnSalvar.isClickable){
+                        if(TextUtils.isEmpty(editRegistro.text.toString())){ editRegistro.error = "*" }
+                        if(TextUtils.isEmpty(editNome.text.toString())){ editNome.error = "*" }
+                        if(TextUtils.isEmpty(editDtaNascimento.text.toString())){ editDtaNascimento.error = "*" }
+                        if(TextUtils.isEmpty(editEmail.text.toString())){ editEmail.error = "*" }
+                        if(TextUtils.isEmpty(editSenha.text.toString())){ editSenha.error = "*" }
+                        if(TextUtils.isEmpty(editTelefone.text.toString())){ editTelefone.error = "*" }
+
+                        else {
+                            var professor = Professor()
+
+                            professor.setRegistro(editRegistro.text.toString())
+                            professor.setNome(editNome.text.toString())
+                            professor.setDtaNascimento(editDtaNascimento.text.toString())
+                            professor.setEmail(editEmail.text.toString())
+                            professor.setSenha(editSenha.text.toString())
+                            professor.setTelefone(editTelefone.text.toString())
+
+                            if(!TextUtils.isEmpty(editCpf.text.toString())){
+                                professor.setCpf(editCpf.text.toString())
+                            }
+
+                            if(professorController.inserir(professor)){
+                                clearForm()
+                                Toast.makeText(applicationContext, "O professor: "+professor.getNome()+" foi inserido com sucesso!", Toast.LENGTH_LONG).show()
+                            } else {
+                                Toast.makeText(applicationContext, "Não foi inserido nenhum professor!", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                })
+                alertDialog.setNeutralButton(R.string.alertDialogSalvarAluno, DialogInterface.OnClickListener { dialogInterface, i ->
+                    if(btnSalvar.isClickable){
+
+                    }
+                })
 
             }.create().show()
         }

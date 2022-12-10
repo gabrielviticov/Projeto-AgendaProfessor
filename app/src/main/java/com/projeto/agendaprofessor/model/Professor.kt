@@ -1,26 +1,19 @@
 package com.projeto.agendaprofessor.model
 
-class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascimento: String, email: String, senha: Long, telefone: Long ) {
+import android.text.Editable
 
-    init {
-        setId(id)
-        setRegistro(registro)
-        setNome(nome)
-        setCpf(cpf)
-        setDtaNascimento(dtaNascimento)
-        setEmail(email)
-        setSenha(senha)
-        setTelefone(telefone)
-    }
+class Professor() {
+
+
 
     private var id: Int? = null
     private var registro: String? = null
     private var nome: String? = null
     private var email: String? = null
-    private var cpf: Long? = null
+    private var cpf: String? = null
     private var dtaNascimento: String? = null
-    private var senha: Long? = null
-    private var telefone: Long? = null
+    private var senha: String? = null
+    private var telefone: String? = null
 
 
     public fun getId(): Int? {
@@ -39,7 +32,7 @@ class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascime
         return email
     }
 
-    public fun getCpf(): Long? {
+    public fun getCpf(): String? {
         return cpf
     }
 
@@ -47,11 +40,11 @@ class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascime
         return dtaNascimento
     }
 
-    public fun getSenha(): Long? {
+    public fun getSenha(): String? {
         return senha
     }
 
-    public fun getTelefone(): Long? {
+    public fun getTelefone(): String? {
         return telefone
     }
 
@@ -71,7 +64,7 @@ class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascime
         this.email = value
     }
 
-    public fun setCpf(value: Long?) {
+    public fun setCpf(value: String?) {
         this.cpf = value
     }
 
@@ -79,11 +72,11 @@ class Professor(id: Int?, registro: String, nome: String, cpf: Long?, dtaNascime
         this.dtaNascimento = value
     }
 
-    public fun setSenha(value: Long?) {
+    public fun setSenha(value: String?) {
         this.senha = value
     }
 
-    public fun setTelefone(value: Long?) {
+    public fun setTelefone(value: String?) {
         this.telefone = value
     }
 
