@@ -40,8 +40,10 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
+
         changeColor()
         findElementsByIds()
+
         getCalendar()
         customizeElements()
         actionByElements()
@@ -143,8 +145,7 @@ class CadastroActivity : AppCompatActivity() {
 
     fun actionByElements(){
 
-        var professor = Professor()
-        var professorController = ProfessorController(this)
+
 
         btnCancelar.setOnClickListener {
             val alertDialog = AlertDialog.Builder(this)
@@ -180,12 +181,13 @@ class CadastroActivity : AppCompatActivity() {
                         if(TextUtils.isEmpty(editTelefone.text.toString())){ editTelefone.error = "*" }
 
                         else {
-                            var professor = Professor()
+                            val professor = Professor()
+                            val professorController = ProfessorController(applicationContext)
 
-                            professor.setRegistro(editRegistro.text.toString())
-                            professor.setNome(editNome.text.toString())
+                            professor.setRegistro(editRegistro.text.toString().uppercase())
+                            professor.setNome(editNome.text.toString().uppercase())
                             professor.setDtaNascimento(editDtaNascimento.text.toString())
-                            professor.setEmail(editEmail.text.toString())
+                            professor.setEmail(editEmail.text.toString().lowercase())
                             professor.setSenha(editSenha.text.toString())
                             professor.setTelefone(editTelefone.text.toString())
 

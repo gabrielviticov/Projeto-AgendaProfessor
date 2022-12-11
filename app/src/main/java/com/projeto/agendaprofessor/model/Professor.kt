@@ -2,7 +2,7 @@ package com.projeto.agendaprofessor.model
 
 import android.text.Editable
 
-class Professor() {
+class Professor {
 
 
 

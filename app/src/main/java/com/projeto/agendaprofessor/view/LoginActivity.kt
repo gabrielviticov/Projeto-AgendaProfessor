@@ -9,10 +9,12 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.projeto.agendaprofessor.R
 import com.projeto.agendaprofessor.controller.ProfessorController
+import com.projeto.agendaprofessor.datasource.AppDataBase
 
 open class LoginActivity : AppCompatActivity() {
 
@@ -90,6 +92,19 @@ open class LoginActivity : AppCompatActivity() {
         btnEntrar.setOnClickListener {
             if(TextUtils.isEmpty(editRP.text.toString())){ editRP.error = "*" }
             if(TextUtils.isEmpty(editSenha.text.toString())){ editSenha.error = "*" }
+            else {
+                val rp = editRP.text.toString().uppercase()
+                val senha = editSenha.text.toString().uppercase()
+                val validarLogin = AppDataBase.validationLogin(rp, senha)
+                val nomeProfessor = AppDataBase.welcomeTeacher(rp)
+
+                if(validarLogin){
+                    Toast.makeText(applicationContext, "Seja bem vindo(a): "+nomeProfessor+"!", Toast.LENGTH_LONG).show()
+                } else {
+                    editRP.error = "Professor não encontrado! Por favor, informe as credenciais corretamente!"
+                    editSenha.error = "Professor não encontrado! Por favor, informe as credenciais corretamente!"
+                }
+            }
         }
 
         btnCadastrar.setOnClickListener {
